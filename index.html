@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.R.U.D. App</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="containerfluid">
+   
+    
+    <!-- BELOW THE SCRIPTS START NAV IF USED -->
+<div class="container">
+    <div class="row border-bottom border-3 border-dark">
+    <h1 class="display-1 text-center">The Comment Feed</h1>
+    <h6 class="display-6 text-center">Here Lies the Mighty Comment Feed</h6>
+    </div>
+    <div class="row align-items-center mt-5 border border-2 p-3 " id="new-comment">
+        <div class="col">
+            <label for="Full Name">Full Name</label><br>
+            <input type="text"  id="fullName"><br>
+            <label for="commentBox">Enter your comment below</label><br>
+            <textarea type="text" id="commentBox" class="editBoxEntry"></textarea><br>
+            <button class="btn btn-primary" id="submitBtn">Submit</button>
+        </div>
+            <div class="col ">
+                <h2>Edit Comment</h2>
+            <label for="commentBox">Put the new text for the comment you want to edit in the following box, and then click edit and it will change the value of the text only</label><br>
+            <textarea type="text" id="editText" class="editBoxEntry"></textarea><br>
+    </div>
+    
+</div>
+
+<!-- BELOW IS THE API RETURN CONTENT -->
+<div id="app" class="mt-3">
+
+
+</div>
+
+
+</body>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="script.js"></script>
+</html>
