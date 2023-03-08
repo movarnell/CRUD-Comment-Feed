@@ -97,7 +97,7 @@ class DOMManager {
                     <p>${comment.comment}</p>
                 
                     <div id="editComment_${comment.id}" style="display:none;">
-                        <textarea type="text" id="editText_${comment.id}" rows="3" cols="40" value="${comment.comment}">${comment.comment}</textarea>
+                        <textarea type="text" id="editText_${comment.id}" rows="5" cols="30" value="${comment.comment}">${comment.comment}</textarea>
                         <button class="btn btn-outline-primary" onclick="DOMManager.saveComment('${comment.id}')">Save</button>
                     </div>
                     
