@@ -60,7 +60,6 @@ class CommentService {
 }
 
 class DOMManager {
-    static comments;
 
     static getAllComments() {
         CommentService.getAllComments().then(comments => this.render(comments));
