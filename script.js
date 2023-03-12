@@ -1,38 +1,39 @@
+// Welcome to week 12 final project CRUD app - by: Michael Varnell
+// The api for this is also tied to a live version at http://crud.michaelvarnell.com so there may be
+// comments from users who have visited the site.
+
 document.getElementById('submitBtn').addEventListener('click', () => { submitClick() });
 
-
-
+// CLASS/CONSTRUCTOR FOR COMMENT
 class Comment {
     constructor(name, comment) {
         this.name = name;
         this.comment = comment;
     }
 }
-
-
-
-
+// CLASS FOR SERVICES TO BE RUN
 class CommentService {
+    //STATIC URL FOR MY MOCK-API
     static url = 'https://6404d2b5eed195a99f76c0b3.mockapi.io/comments';
 
+    // FUNCTION TO GET ALL COMMENTS FROM API
     static getAllComments() {
         return $.get(this.url);
     }
-
+    // FUNCTION TO GET COMMENT BY ID
     static getComment(id) {
         return $.get((this.url) + `/${id}`);
     }
-
+    // FUNCTION TO CREATE A COMMENT
     static createComment(name, comment) {
         return $.post(this.url, name, comment);
     }
-
+    // FUNCTION TO UPDATE A COMMENT USING THE EDIT BUTTON
     static updateComment(id, comment) {
         console.log(id);
         $(`#editComment_${id}`).show();
         $(`#${id} p`).hide();
 
-        console.log(name);
         console.log(comment);
 
         return $.ajax({
@@ -49,23 +50,23 @@ class CommentService {
             });
     }
 
-
+// FUNCTION TO SEND DELETE A COMMENT BY ITS ID TO API
     static deleteComment(id) {
         return $.ajax({
             url: this.url + `/${id}`,
             type: 'DELETE'
         });
     }
-
 }
 
+// CREATES THE DOM EACH TIME
 class DOMManager {
 
     static getAllComments() {
         CommentService.getAllComments().then(comments => this.render(comments));
     }
 
-
+// FUNCTION THAT GETS CALLED TO DELETE THE COMMENT
     static deleteComment(id) {
         CommentService.deleteComment(id)
             .then(() => {
@@ -73,7 +74,7 @@ class DOMManager {
             })
             .then((comments) => this.render(comments));
     }
-
+// FUNCTION THAT IS CALLED TO CREATE A NEW COMMENT USING COMMENT CLASS AND COMMENTSERVICE
     static createComment(name, comment) {
         CommentService.createComment(new Comment(name, comment))
             .then(() => {
@@ -84,13 +85,13 @@ class DOMManager {
 
 
 
-
+// THIS RENDERS EACH COMMENT ITERATING THROUGH EACH RECORD IN A FOR LOOP. 
     static render(comments) {
         this.comments = comments;
         $('#app').empty();
         for (let comment of comments) {
             $('#app').prepend(
-                `<div id="${comment.id}" class="card bg-light border border-dark border-1 m-3 p-2 shadow">
+                `<div id="${comment.id}" class="card bg-light border border-dark border-2 rounded-4 m-3 p-2 shadow">
                 <div >
                     <h5>${comment.name} says,</h5>
                     <p>${comment.comment}</p>
@@ -124,10 +125,9 @@ class DOMManager {
             })
             .then((comments) => this.render(comments));
     }
-
-
-
 }
+
+// THIS IS THE FUNCTION TO SUBMIT ENTERED TEXT IT ALSO RESETS THE TEXBOX VALUES
 function submitClick() {
     let name = document.getElementById('fullName').value;
     let comment = document.getElementById('commentBox').value;
@@ -135,4 +135,5 @@ function submitClick() {
     document.getElementById('fullName').value = "";
     document.getElementById('commentBox').value = "";
 };
+// CALLING THIS POPULATES THE COMMENTS LISTED ON THE API WHEN THE PAGE LOADS. 
 DOMManager.getAllComments();

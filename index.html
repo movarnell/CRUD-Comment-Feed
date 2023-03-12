@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="containerfluid">
-   
-    
-    <!-- BELOW THE SCRIPTS START NAV IF USED -->
+<!-- THIS PROJECT DOES NOT LINK BY CDN TO BOOTSTRAP OR JQUERY 
+THEY MUST BE INSTALLED FOR IT TO BE FORMATTED CORRECTLY
+THERE IS A LIVE VERSION OF THIS AT http://crud.michaelvarnell.com -->
+<body class="container-fluid">
 <div class="container">
     <div class="row border-bottom border-3 border-dark">
     <h1 class="display-1 text-center newspaper">The Comment Feed</h1>
@@ -19,19 +19,20 @@
     </div>
     <h3 class="newspaper text-center">If you are on this page please leave a comment so we can see you were here!</h3>
     
-    <div class="row align-items-start mt-5 border rounded-4 border-2 m-3 p-3 " id="new-comment">
-        
+    <!-- OPENING COMMENT FORM -->
+    <div class="row align-items-start mt-5 border rounded-5 border-2 border-dark m-3 p-3 shadow" id="new-comment">
             <h2>Leave Comment</h2>
-            <label for="Full Name">Full Name</label><br>
+            <label for="Full Name" class="fw-bold" >Full Name</label><br>
             <input type="text"  id="fullName" class="m-1"><br>
-            <label for="commentBox">Enter your comment below</label><br>
+            <label for="commentBox" class="fw-bold">Enter your comment below</label><br>
             <textarea type="text" id="commentBox" class="editBoxEntry m-1"></textarea><br>
-            <button class="btn btn-primary" id="submitBtn">Submit</button>
-        
+            <div class="text-center">
+            <button class="btn btn-primary rounded-5 w-50 border border-2 border-dark mt-2" id="submitBtn">Submit</button>
+          </div>
         
 </div>
 
-<!-- BELOW IS THE API RETURN CONTENT -->
+<!-- BELOW IS THE API RETURN CONTENT FOR THE WHOLE FEED -->
 <div id="app" class="mt-3">
 
 
